@@ -1,55 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Number Guessing Game</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
     <link rel="stylesheet" href="./style.css">
+
 </head>
+
 <body>
 
-  <h1>Number Guessing Game</h1>
+    <div class="container min-vh-100 d-flex justify-content-center align-items-center">
 
-    <div id="levelSection">
+        <div class="card border-0 shadow-lg rounded-5 p-4 game-card">
 
-        <h2>Select Level</h2>
+            <h1 class="text-center fw-bold mb-4">
+                🎲 Number Guessing Game
+            </h1>
 
-        <button onclick="startGame(10)">Easy (1-10)</button>
+            <!-- ================= LEVEL SECTION ================= -->
 
-        <button onclick="startGame(50)">Medium (1-50)</button>
+            <div id="levelSection">
 
-        <button onclick="startGame(100)">Hard (1-100)</button>
+                <h4 class="text-center mb-4">
+                    Select Difficulty
+                </h4>
+
+                <div class="d-grid gap-3">
+
+                    <button
+                        class="btn btn-success btn-lg rounded-pill"
+                        onclick="startGame(10)">
+                        🟢 Easy (1 - 10)
+                    </button>
+
+                    <button
+                        class="btn btn-warning btn-lg rounded-pill"
+                        onclick="startGame(50)">
+                        🟡 Medium (1 - 50)
+                    </button>
+
+                    <button
+                        class="btn btn-danger btn-lg rounded-pill"
+                        onclick="startGame(100)">
+                        🔴 Hard (1 - 100)
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- ================= GAME SECTION ================= -->
+
+            <div id="gameSection" style="display:none;">
+
+                <h4
+                    id="title"
+                    class="text-center mt-3 mb-4">
+                </h4>
+
+                <div class="d-flex justify-content-between align-items-center mb-4">
+
+                    <h5 id="hearts" class="mb-0"></h5>
+
+                    <h5 id="score" class="mb-0">
+                        Score : 0
+                    </h5>
+
+                </div>
+
+                <input
+                    type="number"
+                    id="guessInput"
+                    class="form-control form-control-lg rounded-pill mb-3"
+                    
+                    onkeydown="checkEnter(event)"
+                >
+
+                <button
+                    id="checkBtn"
+                    class="btn btn-primary btn-lg rounded-pill w-100 mb-3"
+                    onclick="checkGuess()">
+
+                    🎯 Check Guess
+
+                </button>
+
+                <p
+                    id="message"
+                    class="text-center fw-semibold">
+                </p>
+
+                <button
+                    id="restartBtn"
+                    class="btn btn-dark btn-lg rounded-pill w-100"
+                    onclick="restartGame()"
+                    style="display:none;">
+
+                    🔄 Play Again
+
+                </button>
+
+            </div>
+
+        </div>
 
     </div>
 
+    <!-- Audio -->
 
-    <div id="gameSection" style="display:none;">
+    <audio id="winSound" src="./audio/win.wav"></audio>
 
-        <h2 id="title"></h2>
+    <audio id="loseSound" src="./audio/lose.wav"></audio>
 
-        <h3 id="hearts"></h3>
-<input
-    type="number"
-    id="guessInput"
-    onkeydown="checkEnter(event)"
->
+    <!-- Confetti -->
 
-<button id="checkBtn"  onclick="checkGuess()">
-    Check
-</button>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 
-        <p id="message"></p>
+    <!-- JS -->
 
-        <button
-        id="restartBtn"
-        onclick="restartGame()"
-        style="display:none;">
-            Restart
-        </button>
-
-    </div>
-
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
     <script src="./app.js"></script>
+
+    <!-- Bootstrap JS -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
+
 </html>

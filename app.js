@@ -3,11 +3,15 @@ let gameSection = document.getElementById("gameSection");
 let guessInput = document.getElementById("guessInput");
 let message = document.getElementById("message");
 let hearts = document.getElementById("hearts");
+let scoreText = document.getElementById("score");
 let checkBtn = document.getElementById("checkBtn");
 let restartBtn = document.getElementById("restartBtn");
+let title = document.getElementById("title");
+let winSound = document.getElementById("winSound");
+let loseSound = document.getElementById("loseSound");
 
 
-
+let score=0;
 let randomNumber;
 let maxRange;
 let lives;
@@ -33,8 +37,12 @@ else {
 }
 
 updateHearts();
+title.innerText = `Choose a number between 1 and ${maxRange}`;
 
 }
+score = 0;
+updateScore();
+
 
 function updateHearts(){
 
@@ -43,11 +51,18 @@ function updateHearts(){
 }
 
 
+function updateScore() {
+    scoreText.innerText = `Score : ${score}`;
+}
+
+
 function checkEnter(event) {
 
     if (event.key === "Enter") {
         checkGuess();
     }
+
+
 
 }
 
@@ -61,11 +76,18 @@ function checkGuess(){
     let guess=Number(guessInput.value);
  
     if (guess===randomNumber){
-               message.innerText = "🎉 You Win!";
+
+            score = lives * 10;
+    updateScore();
+        
+               message.innerText = "🎉 Congratulations ! You Win! 🎉";
+               winSound.play();
                  confetti();
+            
            guessInput.disabled = true;  
           checkBtn.style.display = "none";
           restartBtn.style.display = "block";
+          guessInput.value = "";
       
     } else if (guess > randomNumber){
          message.innerText = "Too High";
@@ -79,6 +101,7 @@ function checkGuess(){
           guessInput.value = ""
     }
     if (lives === 0){
+        loseSound.play();
     message.innerText = `💀 Game Over! 
     Better Luck Next Time 
     The correct number was ${randomNumber}`;
@@ -97,4 +120,5 @@ function restartGame(){
     guessInput.disabled = false;
     checkBtn.style.display = "block";
     message.innerText = "";
+
 }

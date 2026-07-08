@@ -1,0 +1,119 @@
+body {
+    background: radial-gradient(circle at top left, #8c99aa 0%, transparent 35%), radial-gradient(circle at bottom right, #6a699b 0%, transparent 35%), linear-gradient(135deg, #d1d3d8, #111827, #1e293b);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Poppins, sans-serif
+}
+
+.container {
+    padding: 20px
+}
+
+.game-card {
+    max-width: 540px;
+    width: 100%;
+    background: rgba(255, 255, 255, .08);
+    backdrop-filter: blur(18px);
+    border-radius: 28px !important;
+    border: 1px solid rgba(255, 255, 255, .12) !important;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, .35);
+    color: #fff;
+    padding: 40px !important
+}
+
+.game-card:hover {
+    transform: translateY(-6px)
+}
+
+h1,
+#title,
+h4 {
+    color: #fff
+}
+
+#hearts {
+    font-size: 1.8rem;
+    animation: pulse 1.3s infinite
+}
+
+#score {
+    background: #2563eb;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 999px
+}
+
+.form-control {
+    background: rgba(255, 255, 255, .12);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, .2);
+    border-radius: 16px !important;
+    padding: 14px
+}
+
+.form-control::placeholder {
+    color: #cbd5e1
+}
+
+.form-control:focus {
+    background: rgba(255, 255, 255, .16);
+    color: #fff;
+    border-color: #60a5fa;
+    box-shadow: 0 0 0 .25rem rgba(96, 165, 250, .2)
+}
+
+.btn {
+    border-radius: 16px !important;
+    font-weight: 600;
+    padding: 14px;
+    transition: .3s
+}
+
+.btn:hover {
+    transform: translateY(-3px)
+}
+
+.btn-success {
+    background: linear-gradient(135deg, #22c55e, #16a34a)
+}
+
+.btn-warning {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: #fff
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, #ef4444, #dc2626)
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #60a5fa, #2563eb)
+}
+
+.btn-dark {
+    background: linear-gradient(135deg, #374151, #111827)
+}
+
+#message {
+    min-height: 42px;
+    color: #fff;
+    text-align: center
+}
+
+@keyframes pulse {
+    50% {
+        transform: scale(1.1)
+    }
+}
+
+@media(max-width:576px) {
+    .game-card {
+        padding: 24px !important
+    }
+
+    h1 {
+        font-size: 1.8rem
+    }
+}
